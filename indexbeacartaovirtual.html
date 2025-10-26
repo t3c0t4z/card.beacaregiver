@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffb3d9">
+    <title>Bia - Caregiver Profissional no Canadá 🇨🇦</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biafavicom.png">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Bia Caregiver">
+    <link rel="apple-touch-icon" href="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biafavicom.png">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Beatriz Castro - Caregiver Profissional em Toronto, Canadá. Cuidado especializado com amor e dedicação.">
+    <meta name="keywords" content="caregiver, Toronto, Beatriz Castro, babysitter, cuidadora, Canadá">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .card-container {
+            background: #ffffff;
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (min-width: 431px) {
+            body {
+                padding: 10px;
+            }
+            
+            .card-container {
+                max-width: 430px;
+                height: calc(100% - 20px);
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(255, 182, 217, 0.4);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffb3d9 0%, #ffc9e3 100%);
+            padding: max(env(safe-area-inset-top), 20px) 20px 15px 20px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: max(env(safe-area-inset-top), 10px);
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+
+        .lang-switcher:active {
+            transform: scale(0.95);
+        }
+
+        .lang-option {
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .lang-option.active {
+            color: #2d2d2d;
+        }
+
+        .lang-divider {
+            width: 1px;
+            height: 12px;
+            background: #ccc;
+        }
+
+        .icon-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .phone-icon {
+            width: 42px;
+            height: 42px;
+            border: 2.5px solid #2d2d2d;
+            border-radius: 12px;
+            background: #ffffff;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .phone-icon::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 2.5px;
+            background: #2d2d2d;
+            border-radius: 2px;
+        }
+
+        .video-icon {
+            width: 52px;
+            height: 34px;
+            background: #ffd966;
+            border-radius: 7px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .video-icon::after {
+            content: '';
+            position: absolute;
+            right: -7px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 11px solid #ffd966;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+        }
+
+        .title-text {
+            font-size: 13px;
+            color: #2d2d2d;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .name-badge {
+            background: #ffd966;
+            display: inline-block;
+            padding: 10px 28px;
+            border-radius: 22px;
+            margin-left: 3px;
+        }
+
+        .name-badge h1 {
+            font-size: 24px;
+            color: #2d2d2d;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .profile-section {
+            width: 100%;
+            height: 45vh;
+            max-height: 450px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            filter: brightness(1.05) contrast(1.05);
+            animation: photoGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes photoGlow {
+            0% {
+                filter: brightness(1.05) contrast(1.05) saturate(1);
+            }
+            100% {
+                filter: brightness(1.08) contrast(1.08) saturate(1.08);
+            }
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(158, 234, 232, 0.2) 100%);
+            pointer-events: none;
+        }
+
+        .qr-section {
+            background: linear-gradient(135deg, #9eeae8 0%, #b8f3f1 50%, #9eeae8 100%);
+            padding: 20px 20px max(env(safe-area-inset-bottom, 20px), 20px) 20px;
+            border-radius: 30px 30px 0 0;
+            margin-top: -25px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 -10px 30px rgba(158, 234, 232, 0.3);
+            min-height: 420px;
+        }
+
+        .qr-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .qr-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .qr-title {
+            font-size: 18px;
+            color: #2d2d2d;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .qr-subtitle {
+            font-size: 12px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .qr-container {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            position: relative;
+            margin: 0 auto 15px;
+            width: 100%;
+            max-width: 260px;
+        }
+
+        .qr-corners {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .corner {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border: 3.5px solid #2d2d2d;
+            border-radius: 7px;
+        }
+
+        .corner.top-left {
+            top: 14px;
+            left: 14px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner.top-right {
+            top: 14px;
+            right: 14px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner.bottom-left {
+            bottom: 14px;
+            left: 14px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner.bottom-right {
+            bottom: 14px;
+            right: 14px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .qr-code-img {
+            width: 100%;
+            max-width: 200px;
+            min-height: 200px;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+            object-fit: contain;
+        }
+
+        .info-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .service-badge {
+            background: rgba(255, 255, 255, 0.95);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #2d2d2d;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .canada-flag {
+            font-size: 16px;
+        }
+
+        .experience {
+            font-size: 11px;
+            color: #444;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 10px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: #ffffff;
+            color: #2d2d2d;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-btn:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:active::before {
+            opacity: 1;
+        }
+
+        .contact-btn i {
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:active i {
+            transform: scale(1.1);
+        }
+
+        .contact-btn span {
+            position: relative;
+            z-index: 1;
+            font-size: 11px;
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(18, 140, 126, 0.15) 100%);
+            border-color: rgba(37, 211, 102, 0.3);
+            color: #128C7E;
+        }
+
+        .whatsapp i {
+            color: #25D366;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, rgba(240, 148, 51, 0.15) 0%, rgba(188, 24, 136, 0.15) 100%);
+            border-color: rgba(220, 39, 67, 0.3);
+            color: #bc1888;
+        }
+
+        .instagram i {
+            color: #dc2743;
+        }
+
+        .imessage {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.15) 0%, rgba(48, 209, 88, 0.15) 100%);
+            border-color: rgba(52, 199, 89, 0.3);
+            color: #30B052;
+        }
+
+        .imessage i {
+            color: #34C759;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        @media (max-width: 380px) {
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .profile-section {
+                height: 38vh;
+            }
+
+            .qr-section {
+                padding: 18px 20px max(env(safe-area-inset-bottom, 18px), 18px) 20px;
+                min-height: 380px;
+            }
+
+            .qr-code-img {
+                max-width: 170px;
+            }
+
+            .qr-container {
+                padding: 16px;
+                max-width: 230px;
+            }
+        }
+
+        @media (max-height: 640px) {
+            .profile-section {
+                height: 35vh;
+            }
+
+            .qr-section {
+                padding: 15px 20px max(env(safe-area-inset-bottom, 15px), 15px) 20px;
+                min-height: 350px;
+            }
+
+            .qr-header {
+                margin-bottom: 12px;
+            }
+
+            .qr-title {
+                font-size: 16px;
+            }
+
+            .qr-code-img {
+                max-width: 150px;
+            }
+
+            .qr-container {
+                padding: 14px;
+                max-width: 210px;
+                margin-bottom: 12px;
+            }
+
+            .contact-btn {
+                padding: 9px 18px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            .card-container {
+                overflow-y: auto;
+            }
+
+            .profile-section {
+                height: 300px;
+            }
+
+            .qr-section {
+                min-height: 320px;
+            }
+        }
+        .contact-btn.active {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 0 0 3px rgba(158, 234, 232, 0.6), 0 4px 16px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .link {
+            background: linear-gradient(135deg, rgba(158, 234, 232, 0.15) 0%, rgba(184, 243, 241, 0.15) 100%);
+            border-color: rgba(158, 234, 232, 0.3);
+            color: #5ABAB8;
+        }
+
+        .link i {
+            color: #9EEAE8;
+       }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="header">
+            <div class="lang-switcher" onclick="toggleLanguage()">
+                <span class="lang-option active" id="lang-pt">PT</span>
+                <span class="lang-divider"></span>
+                <span class="lang-option" id="lang-en">EN</span>
+            </div>
+
+            <div class="icon-row">
+                <div class="phone-icon"></div>
+                <div class="video-icon"></div>
+                <div class="title-text">
+                    <span class="lang-content active" data-lang="pt">Olá, você é uma família<br>procurando por uma caregiver?</span>
+                    <span class="lang-content" data-lang="en">Hello, are you a family<br>looking for a caregiver?</span>
+                </div>
+            </div>
+            <div class="name-badge">
+                <h1>Bia</h1>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="profile-section">
+                <img src="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/bia3.jpeg" alt="Bia - Caregiver Profissional no Canadá" class="profile-image">
+                <div class="photo-overlay"></div>
+            </div>
+
+            <div class="qr-section">
+                <div class="qr-content">
+                    <div class="qr-header">
+                        <div class="qr-title">
+                            <span class="lang-content active" data-lang="pt">📱 Salve Meu Contato</span>
+                            <span class="lang-content" data-lang="en">📱 Save My Contact</span>
+                        </div>
+                        <div class="qr-subtitle">
+                            <span class="lang-content active" data-lang="pt">Escaneie o QR Code abaixo</span>
+                            <span class="lang-content" data-lang="en">Scan the QR Code below</span>
+                        </div>
+                    </div>
+
+                    <div class="qr-container">
+                        <div class="qr-corners">
+                            <div class="corner top-left"></div>
+                            <div class="corner top-right"></div>
+                            <div class="corner bottom-left"></div>
+                            <div class="corner bottom-right"></div>
+                        </div>
+                        <img src="https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biacardqrcodelink.png" alt="QR Code Bia Caregiver" class="qr-code-img">
+                    </div>
+
+                    <div class="info-section">
+                        <div class="service-badge">
+                            <span class="canada-flag">🇨🇦</span>
+                            <span class="lang-content active" data-lang="pt">Eu sou a Beatriz Castro, caregiver profissional aqui em Toronto</span>
+                            <span class="lang-content" data-lang="en">I'm Beatriz Castro, professional caregiver here in Toronto</span>
+                        </div>
+                        <div class="experience">
+                            <span class="lang-content active" data-lang="pt">✨ Cuidado especializado com amor e dedicação</span>
+                            <span class="lang-content" data-lang="en">✨ Specialized care with love and dedication</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-buttons">
+                    <button class="contact-btn whatsapp" onclick="showQR('whatsapp')" data-social="whatsapp">
+                       <i class="fab fa-whatsapp"></i>
+                       <span>WhatsApp</span>
+                    </button>
+                    <button class="contact-btn instagram" onclick="showQR('instagram')" data-social="instagram">
+                       <i class="fab fa-instagram"></i>
+                       <span>Instagram</span>
+                    </button>
+                    <button class="contact-btn imessage" onclick="showQR('imessage')" data-social="imessage">
+                       <i class="fas fa-comment-dots"></i>
+                       <span>iMessage</span>
+                    </button>
+                    <button class="contact-btn link" onclick="showQR('link')" data-social="link">
+                       <i class="fas fa-link"></i>
+                       <span>
+                           <span class="lang-content active" data-lang="pt">Landing Page</span>
+                           <span class="lang-content" data-lang="en">Landing Page</span>
+                       </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let currentLang = 'pt';
+
+        // QR CODES
+        const qrCodes = {
+            whatsapp: {
+                url: 'https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biacardqrcodewpp.png',
+                label: { pt: 'WhatsApp', en: 'WhatsApp' }
+            },
+            instagram: {
+                url: 'https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biacardqrcodeinsta.png',
+                label: { pt: 'Instagram', en: 'Instagram' }
+            },
+            imessage: {
+                url: 'https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biacardqrcodesms.png',
+                label: { pt: 'iMessage', en: 'iMessage' }
+            },
+            link: {
+                url: 'https://lhujzzoqebgjbsnezmrt.supabase.co/storage/v1/object/public/Photos/biacardqrcodelink.png',
+                label: { pt: 'Landing Page', en: 'Landing Page' }
+            }
+        };
+
+        // SHOW QR CODE - SÓ TROCA IMAGEM, NÃO ABRE LINK
+        function showQR(social) {
+            const qrImage = document.querySelector('.qr-code-img');
+            const qrTitle = document.querySelector('.qr-title');
+            const buttons = document.querySelectorAll('.contact-btn');
+        
+            // Remove active de todos
+            buttons.forEach(btn => btn.classList.remove('active'));
+        
+            // Adiciona active no clicado
+            document.querySelector(`[data-social="${social}"]`).classList.add('active');
+        
+            // Fade out
+            qrImage.style.opacity = '0';
+        
+            setTimeout(() => {
+                // Troca imagem
+                qrImage.src = qrCodes[social].url;
+            
+                // Atualiza título
+                qrTitle.innerHTML = `
+                    <span class="lang-content ${currentLang === 'pt' ? 'active' : ''}" data-lang="pt">📱 ${qrCodes[social].label.pt}</span>
+                    <span class="lang-content ${currentLang === 'en' ? 'active' : ''}" data-lang="en">📱 ${qrCodes[social].label.en}</span>
+                `;
+            
+                // Fade in
+                qrImage.style.opacity = '1';
+            }, 200);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+        
+            // Update language switcher
+            document.getElementById('lang-pt').classList.toggle('active');
+            document.getElementById('lang-en').classList.toggle('active');
+        
+            // Update all content
+            document.querySelectorAll('.lang-content').forEach(element => {
+                if (element.getAttribute('data-lang') === currentLang) {
+                    element.classList.add('active');
+                } else {
+                    element.classList.remove('active');
+                }
+            });
+        }
+
+        // Registrar Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+
+        // Inicializar com WhatsApp ativo
+        window.addEventListener('load', () => {
+            document.querySelector('[data-social="whatsapp"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
